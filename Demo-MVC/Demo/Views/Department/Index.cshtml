@@ -1,0 +1,58 @@
+﻿@model  List<Department>
+
+@{
+    Layout =  "_AdvLayout";
+    ViewData["Title"] = "Index";
+    SelectList DeptList = new SelectList(Model, "Id", "Name");
+}
+
+<h1>Index</h1>
+<a href="/Department/New" class="btn btn-success">New DEpartment</a>
+<br/>
+<select name="Dept" id="Dept" class="form-control" asp-items="DeptList" onchange="GetStudentsData()">
+    <option value="0">--Select Department--</option>
+</select>
+<ul id="StdData"></ul>
+<hr />
+<br />
+<br />
+<table class="table table-borderd table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Manager</th>
+        <th></th>
+    </tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
+        <td>@item.ManagerName</td>
+        <td><a href="/Department/details/@item.Id">Deatils</a></td>
+    </tr>
+}
+</table>
+<a href="/product/showproduct">PRoduct</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function  GetStudentsData(){
+        var deptId= document.getElementById("Dept").value;
+          $.ajax(
+              {
+                  url: "/Department/GetStudent",
+                  data:{"DeptID":deptId},
+                  success: function(result){
+                            console.log(result);
+                            document.getElementById("StdData").innerHTML="";
+                            for(let std of result)
+                            {
+                                document.getElementById("StdData").innerHTML+=
+                                        "<li>"+std.name+"</li>";
+                            }
+                       }
+              }
+              );
+    }
+
+</script>

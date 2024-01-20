@@ -1,0 +1,34 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "TestAjax";
+    SelectList stdList=new SelectList(Model,"Id","Name");
+}
+
+<h1>TestAjax</h1>
+<select name="std" id="std" class="form-control" asp-items="stdList" onchange="GetDetails()">
+    <option value="0">--Select Student--</option>
+</select>
+<div id="stdDetail">
+
+</div>
+@section Scripts{
+<script>
+    function GetDetails(){
+        //ajax call
+       var stdID=document.getElementById("std").value;
+       console.log(stdID);
+        $.ajax(
+            {
+                url: "/Student/Testpartial/"+stdID,
+                data:{"id":stdID}
+                , 
+                success: function(result){
+                    console.log(result);
+                      document.getElementById("stdDetail").innerHTML=result;
+
+                   }
+            }
+            );
+    }
+</script>
+}

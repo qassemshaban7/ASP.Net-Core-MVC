@@ -1,0 +1,16 @@
+﻿
+@model StudentBranchesTempMSgViewModel
+@{
+    ViewData["Title"] = "GetStudentUsingViewModel";
+}
+
+<h1 style="color:@Model.Color">GetStudentUsingViewModel</h1>
+
+@Model.StdId
+@Model.StdName
+<select class="form-control">
+        @foreach (var item in Model.Branches)
+        {
+            <option>@item</option>
+        }
+</select>

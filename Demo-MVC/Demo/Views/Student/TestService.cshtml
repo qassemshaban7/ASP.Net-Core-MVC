@@ -1,0 +1,10 @@
+﻿@using Demo.Repository
+@inject IStudentRepository stdREpo
+
+@{
+    ViewData["Title"] = "TestService";
+}
+
+<h1>TestService</h1>
+<h1> Cotroller Serivce ID=  @ViewBag.servicesID</h1>
+<h1>View Service ID = @stdREpo.id</h1>

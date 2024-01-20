@@ -1,0 +1,19 @@
+﻿@model Product
+<!--Strong Type View--> 
+@{
+    int x=11;
+    int y = x + 1;
+}
+
+@Model.Id
+@Model.NAme
+@Model.PRice
+<img src="/Images/@Model.Image" />
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">@Model.NAme</h4>
+      <p class="card-text">@Model.PRice</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>

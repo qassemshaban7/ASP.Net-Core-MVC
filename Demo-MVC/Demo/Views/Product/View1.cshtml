@@ -1,0 +1,34 @@
+﻿@{
+    int x = 10;
+    int y = 100;
+}
+
+<h1>@x</h1>
+<h1>@y</h1>
+
+@if (x < y)
+{
+    <h2>X (@x) less than y (@y)</h2>
+}else
+{
+    <h2>Y less than x</h2>
+}
+<ul>
+    @for (var i = 0; i < x; i++)
+    {
+        <li>i</li>
+    }
+</ul>
+<h1>HEllo First View</h1>
+<div>
+
+</div>
+<p>
+
+</p>
+<style>
+    #div{background-color:red}
+</style>
+<script>
+    alert("hi");
+</script>

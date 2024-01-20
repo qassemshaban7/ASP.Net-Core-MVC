@@ -1,0 +1,21 @@
+﻿@model List<Student>
+@{
+  //  Layout = "_MyLayout";
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="Student" asp-action="New">NEw Using Tage Helper</a>
+
+<h1>Index</h1>
+<table class="table table-bordered">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Department.Name</td>
+            <td><a href="/Student/DEtails/@item.Id">Details</a></td>
+            <td><a href="/Student/Edit/@item.Id">Edit</a></td>
+            <td><a href="/Student/DElete/@item.Id">Delete</a></td>
+        </tr>
+    }
+</table>
+
